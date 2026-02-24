@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth text-white" lang="es">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&amp;family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f4c025",
+                        "gold-pale": "#ffefba",
+                        "gold-deep": "#b8860b",
+                        "background-dark": "#050505",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @keyframes liquid-flow {
+            0% { transform: translate(-10%, -10%) scale(1) rotate(0deg); filter: blur(40px) brightness(1); }
+            50% { transform: translate(10%, 5%) scale(1.1) rotate(5deg); filter: blur(55px) brightness(1.3); }
+            100% { transform: translate(-10%, -10%) scale(1) rotate(0deg); filter: blur(40px) brightness(1); }
+        }
+        @keyframes ink-bleed {
+            0% { filter: blur(12px) contrast(5); opacity: 0; letter-spacing: 0.5em; }
+            50% { filter: blur(4px) contrast(2); opacity: 0.8; letter-spacing: 0.1em; }
+            100% { filter: blur(0) contrast(1); opacity: 1; letter-spacing: -0.04em; }
+        }
+        @keyframes rgb-glitch {
+            0% { transform: translate(0); text-shadow: none; }
+            2% { transform: translate(-2px, 1px); text-shadow: 2px 0 #ff0000, -2px 0 #00ffff; }
+            4% { transform: translate(2px, -1px); text-shadow: -2px 0 #ff0000, 2px 0 #00ffff; }
+            6% { transform: translate(0); text-shadow: none; }
+            100% { transform: translate(0); text-shadow: none; }
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .liquid-gold {
+            background: radial-gradient(circle at center, #f4c025 0%, #b8860b 30%, #544e3b 70%, transparent 100%);
+            animation: liquid-flow 12s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+        .ink-bleed-entrance {
+            animation: ink-bleed 4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .glitch-text {
+            animation: rgb-glitch 5s infinite step-end;
+        }
+        .film-grain {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuByhVydYyVszVnTa2arkHZ9jOpW3MDaTwPtMu_CRvbP6KsnzgI8Fk3m3v_D2mexC7lVQbJBFQ1a5u1kogcSw1GYdYnBq5dYwQqFiEPRDymDjetdXl58p5CoDfLJgpjpkz_eabQeOEI_y1ioALs_11K7uq8xisrHMf0AreDQ1UMukaLRsMU9g0elClyw7EG6UiJQcL4OE8O6BKUogjrQXUI8XsvpMVDVHafVtR7_dJHg33ES5wVRJErcgIBBzIkgYsKjQpCQVDqikyBz');
+            opacity: 0.08;
+            mix-blend-mode: overlay;
+        }
+        .texture-overlay {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_iPB6PFfKG58OiP6XSL-2_srxVzQCfH8x1NoCmvfy7kwE9XRLEi9bh9xiynxIkwUzLYXUDbNrwebu-lVDdBOqWMVnIOBs3a75ZsIQkFodqO5UmzIyUD1X0RgXpXZiR5F5TzXHrXd60-yalNoJOjfOxczJf4khWT3BzdDDkdRPe1_rokWMZFc8xjTv69FMuEqj0BH3SVIFl44ZRVDWHwdvkmN1fXAX2ttnfNt41MxguOmcMR_bLuHU2wij-B41ThRrW7MhrDAs0KES');
+            opacity: 0.03;
+            mix-blend-mode: soft-light;
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent 0%, rgba(244, 192, 37, 0.2) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer-move 3s infinite linear;
+        }
+        @keyframes shimmer-move {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+
+    <meta name="description" content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+    <meta property="og:title" content="Hola Prima Agency | Creators of Big Hoop Energy" />
+    <meta property="og:description" content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+    <meta property="og:image" content="https://holaprima.com/images/hola-prima-logo.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+<title>Hola Prima Agency | Creators of Big Hoop Energy</title>
+
+    <link rel="icon" type="image/png" sizes="256x256" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+
+</head>
+
+<body class="bg-background-dark font-display overflow-hidden select-none text-white selection:bg-primary selection:text-black">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="fixed inset-0 film-grain pointer-events-none z-[60]"></div>
+    <div class="fixed inset-0 texture-overlay pointer-events-none z-[59]"></div>
+    <div class="fixed inset-0 pointer-events-none z-[55] opacity-[0.03]">
+        <div class="w-full h-1 bg-primary absolute top-0" style="animation: scanline 8s linear infinite;"></div>
+    </div>
+    <div class="relative flex h-screen w-full flex-col items-center justify-center bg-background-dark overflow-hidden">
+        <div class="absolute top-8 left-8 right-8 flex justify-between items-start z-50">
+            <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-3">
+                    <div class="size-5 text-primary">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <span class="text-primary/60 text-[9px] tracking-[0.5em] font-light uppercase">Hola Prima /
+                        Editorial</span>
+                </div>
+            </div>
+            <div class="flex flex-col items-end">
+                <span class="text-primary/30 text-[9px] tracking-[0.3em] font-mono">CORE_VERSION: 1.0.42</span>
+                <span class="text-primary/20 text-[9px] tracking-[0.3em] font-mono">LATENCY: 14MS</span>
+            </div>
+        </div>
+        <div class="relative w-full h-full flex items-center justify-center">
+            <div class="absolute w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] liquid-gold opacity-40 blur-[80px]"></div>
+            <div class="relative z-10 flex flex-col items-center">
+                <div class="relative group">
+                    <h1
+                        class="text-primary text-6xl md:text-9xl font-extrabold tracking-[-0.04em] ink-bleed-entrance glitch-text relative z-20">
+                        HOLA PRIMA
+                    </h1>
+                    <h1
+                        class="absolute inset-0 text-[#ff003c] text-6xl md:text-9xl font-extrabold tracking-[-0.04em] translate-x-1 opacity-20 blur-[2px] z-10 ink-bleed-entrance">
+                        HOLA PRIMA</h1>
+                    <h1
+                        class="absolute inset-0 text-[#00f0ff] text-6xl md:text-9xl font-extrabold tracking-[-0.04em] -translate-x-1 opacity-20 blur-[2px] z-10 ink-bleed-entrance">
+                        HOLA PRIMA</h1>
+                </div>
+                <div
+                    class="h-[1px] w-48 bg-gradient-to-r from-transparent via-primary/40 to-transparent mt-8 mb-6 relative overflow-hidden">
+                    <div class="shimmer absolute inset-0"></div>
+                </div>
+                <div class="flex flex-col items-center gap-6">
+                    <p class="text-primary/90 text-[11px] tracking-[0.6em] font-serif italic uppercase opacity-80">
+                        Cargando Cultura...
+                    </p>
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="w-48 h-[1px] bg-white/5 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 h-full bg-primary/80 transition-all duration-1000 ease-in-out"
+                                style="width: 78%;"></div>
+                            <div class="absolute top-0 h-full w-4 bg-white blur-sm opacity-50 transition-all duration-1000 ease-in-out"
+                                style="left: 78%;"></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-primary/40 text-[9px] font-mono tracking-[0.3em]">INIT_SEQUENCE</span>
+                            <span class="text-primary text-[10px] font-mono font-bold tracking-widest">78%</span>
+                            <span class="text-primary/40 text-[9px] font-mono tracking-[0.3em]">ENCRYPT_DATA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-0 -z-10">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold-deep/5 rounded-full blur-[120px]"></div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-10 right-10 flex justify-between items-end z-50">
+            <div class="flex flex-col gap-1">
+                <span class="text-primary/20 text-[8px] uppercase tracking-[0.2em] font-bold">System Authority</span>
+                <span class="text-primary/60 text-[10px] font-mono uppercase tracking-[0.3em]">BHE-SECURE-NODE-00</span>
+            </div>
+            <div class="flex flex-col items-end gap-1">
+                <span class="text-primary/20 text-[8px] uppercase tracking-[0.2em] font-bold">Creative
+                    Development</span>
+                <div class="flex items-center gap-2">
+                    <span class="text-primary/70 text-[11px] uppercase tracking-[0.3em] font-bold">Big Hoop
+                        Energy</span>
+                    <span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
+                </div>
+            </div>
+        </div>
+        <div
+            class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]">
+        </div>
+    </div>
+    <div class="fixed bottom-8 right-8 flex items-center gap-6 z-[70]">
+        <button id="skip-btn"
+            class="flex items-center gap-2 text-primary/30 hover:text-primary transition-all duration-500 text-[10px] uppercase tracking-[0.4em] group">
+            <span class="material-symbols-outlined text-sm">keyboard_double_arrow_right</span>
+            <span
+                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">Saltar</span>
+        </button>
+        <div class="h-4 w-[1px] bg-primary/20"></div>
+        <button id="audio-btn"
+            class="flex items-center gap-3 text-primary/40 hover:text-primary transition-colors group">
+            <span
+                class="text-[9px] tracking-widest font-mono opacity-0 group-hover:opacity-100 transition-opacity">AUDIO
+                ON</span>
+            <div
+                class="size-8 rounded-full border border-primary/10 flex items-center justify-center group-hover:bg-primary/5 group-hover:border-primary/30 transition-all">
+                <span class="material-symbols-outlined text-base">brand_awareness</span>
+            </div>
+        </button>
+    </div>
+
+    <script>
+        // Audio toggling (visual only since there's no provided audio track)
+        const audioBtn = document.getElementById('audio-btn');
+        const audioText = audioBtn.querySelector('span');
+        let isAudioOn = false;
+
+        audioBtn.addEventListener('click', () => {
+            isAudioOn = !isAudioOn;
+            if (isAudioOn) {
+                audioText.textContent = 'AUDIO OFF';
+                audioBtn.classList.add('text-primary');
+                audioBtn.classList.remove('text-primary/40');
+            } else {
+                audioText.textContent = 'AUDIO ON';
+                audioBtn.classList.remove('text-primary');
+                audioBtn.classList.add('text-primary/40');
+            }
+        });
+
+        // Handle skip manually
+        document.getElementById('skip-btn').addEventListener('click', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => window.location.href = '/index.html', 500);
+        });
+
+        // Auto-redirect to the site after the primary animation finishes (8 seconds)
+        setTimeout(() => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 1s ease';
+            setTimeout(() => window.location.href = '/index.html', 1000);
+        }, 8000);
+    </script>
+
+</body>
+
+</html>

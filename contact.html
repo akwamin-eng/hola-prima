@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hola Prima | Say Hola</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Bebas+Neue&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Inter:wght@300;400;700&amp;family=Big+Shoulders+Display:wght@800;900&amp;family=Playfair+Display:ital,wght@1,400;1,600;1,900&amp;family=Space+Mono:wght@400&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'marquee': 'marquee 40s linear infinite',
+                        'preloader-fade-out': 'preloaderFade 1s ease-in 5s forwards',
+                        'ink-bleed': 'inkBleed 3s ease-out forwards 1s',
+                        'gold-flow': 'goldFlow 10s ease-in-out infinite alternate',
+                        'glitch': 'glitch 0.2s linear 4.8s 3',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        preloaderFade: {
+                            '0%': { opacity: '1', visibility: 'visible' },
+                            '100%': { opacity: '0', visibility: 'hidden' }
+                        },
+                        inkBleed: {
+                            '0%': { opacity: '0', filter: 'blur(20px) contrast(200%)' },
+                            '100%': { opacity: '1', filter: 'blur(0px) contrast(100%)' }
+                        },
+                        goldFlow: {
+                            '0%': { transform: 'translate(-10%, -10%) scale(1)' },
+                            '100%': { transform: 'translate(10%, 10%) scale(1.1)' }
+                        },
+                        glitch: {
+                            '0%': { transform: 'translate(0)', 'clip-path': 'inset(0 0 0 0)' },
+                            '20%': { transform: 'translate(-5px, 2px)', 'text-shadow': '2px 0 red, -2px 0 blue' },
+                            '40%': { transform: 'translate(-2px, -2px)', 'clip-path': 'inset(10% 0 30% 0)' },
+                            '60%': { transform: 'translate(5px, 2px)', 'text-shadow': '-2px 0 red, 2px 0 blue' },
+                            '80%': { transform: 'translate(2px, -2px)', 'clip-path': 'inset(40% 0 10% 0)' },
+                            '100%': { transform: 'translate(0)', 'clip-path': 'inset(0 0 0 0)' }
+                        }
+                    },
+
+                    colors: {
+                        primary: "#FF00FF",
+                        gold: "#C5A059",
+                        "background-dark": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        display: ["Big Shoulders Display", "Anton", "sans-serif"],
+                        serif: ["Playfair Display", "Bodoni Moda", "serif"],
+                        condensed: ["Bebas Neue", "cursive"],
+                        sans: ["Inter", "sans-serif"],
+                        mono: ["Space Mono", "monospace"],
+                    }
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --cursor-color: #ffffff;
+        }
+        .film-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+        }
+        .custom-cursor {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), background-color 0.3s ease;
+            filter: blur(4px);
+        }
+        .input-group:hover ~ .custom-cursor {
+            background: #FF00FF;
+            transform: scale(2);
+        }
+        .torn-edge {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 95% 100%, 85% 94%, 75% 100%, 65% 92%, 55% 100%, 42% 94%, 33% 100%, 20% 95%, 10% 100%, 0% 94%);
+        }
+        .tape-artifact {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            width: 120px;
+            height: 40px;
+            transform: rotate(-5deg);
+            z-index: 30;
+            border-left: 1px solid rgba(255,255,255,0.2);
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        .rsvp-stamp {
+            border: 2px solid #C5A059;
+            padding: 8px 16px;
+            color: #C5A059;
+            font-family: 'Bebas Neue', cursive;
+            transform: rotate(-12deg);
+            display: inline-block;
+            letter-spacing: 2px;
+            mix-blend-mode: screen;
+            opacity: 0.9;
+        }
+        @keyframes springIn {
+            0% { transform: scale(0.9) translateY(40px); opacity: 0; }
+            50% { transform: scale(1.02) translateY(-5px); opacity: 1; }
+            70% { transform: scale(0.99) translateY(2px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+        .invitation-card {
+            background: #141414;
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 40px 120px rgba(0,0,0,0.9);
+            position: relative;
+            animation: springIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        input, textarea {
+            background: transparent !important;
+            border: none !important;
+            border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            transition: all 0.4s ease;
+        }
+        input:focus, textarea:focus {
+            outline: none !important;
+            border-color: #FF00FF !important;
+            box-shadow: none !important;
+            padding-left: 8px !important;
+        }
+        .cta-glitch:hover {
+            filter: url(#wave-distortion);
+            background: #FF00FF;
+            color: black;
+        }
+        .logo-nav {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+    <meta name="description" content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+    <meta property="og:title" content="Hola Prima | Say Hola" />
+    <meta property="og:description" content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+    <meta property="og:image" content="https://holaprima.com/images/hola-prima-logo.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+
+    <link rel="icon" type="image/png" sizes="256x256" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+
+</head>
+
+<body
+    class="bg-background-dark text-white font-sans antialiased overflow-x-hidden  selection:bg-primary selection:text-black">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+    <div class="film-grain"></div>
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+    <nav
+        class="fixed top-0 left-0 w-full z-50 px-12 py-8 flex justify-between items-center bg-transparent mix-blend-difference text-white">
+        <div class="flex gap-12 text-[11px] tracking-[0.2em] font-medium uppercase font-sans">
+            <a class="hover:text-primary transition-colors relative group" href="/index.html">
+                Home
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a class="hover:text-primary transition-colors relative group" href="/receipts.html">
+                The Receipts
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a class="hover:text-primary transition-colors relative group" href="/servicios.html">
+                Our Servicios
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+        <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+            <a href="/index.html"
+                class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center p-1 hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer">
+                <img alt="Hola Prima Logo" class="w-full h-full object-cover rounded-full"
+                    src="/images/hola-prima-logo.png" />
+            </a>
+        </div>
+        <div class="flex gap-6 items-center">
+            <a class="hover:text-primary transition-colors duration-300" href="/contact.html">
+                <span class="material-symbols-outlined text-xl">mail</span>
+            </a>
+            <a class="hover:text-primary transition-colors duration-300" href="#">
+                <span class="font-display text-sm tracking-widest">LN</span>
+            </a>
+            <a class="hover:text-primary transition-colors duration-300" href="#">
+                <span class="font-display text-sm tracking-widest">IG</span>
+            </a>
+        </div>
+    </nav>
+    <main class="relative pt-40 pb-32 px-6">
+        <div class="max-w-[1400px] mx-auto text-center mb-16 relative">
+            <h1 class="flex flex-col items-center select-none">
+                <span class="font-display font-black text-6xl md:text-[8vw] lg:text-[10vw] leading-[0.85] uppercase tracking-tighter">LET’S
+                    CREATE</span>
+                <span class="font-serif italic text-7xl md:text-[10vw] lg:text-[12vw] leading-[0.7] text-gold -mt-2 lowercase relative z-10">el
+                    impacto</span>
+            </h1>
+        </div>
+        <section class="max-w-6xl mx-auto relative mt-24">
+            <div
+                class="absolute -left-48 top-10 w-80 h-[480px] z-0 hidden lg:block transform -rotate-3 transition-transform duration-700 opacity-40 hover:opacity-100 hover:z-20">
+                <div class="tape-artifact -top-4 left-6"></div>
+                <div class="tape-artifact -bottom-4 right-6 rotate-12"></div>
+                <img alt="Latina Energy Editorial"
+                    class="w-full h-full object-cover grayscale brightness-75 torn-edge border border-white/10"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO6Ugi9PeysNhFDJ9dWXjDIllY2gwfFx21rOf00hZ9uZm7fUtNw_a4yQYXawVWyMGmfGiN0XlyJQjy1YeGZmDGVvolQL1qhlA5gUkwtzh6hpDMdCcJcSfPv0OmHjPLqnm2OEyvYCObZWx1qqqmHCsc-C14370hxyqOyLXS1Dy7KmSB0ap7nXxq1TBeWQoPxTMnGNLqRPrwBWe7nqc74FxGRWJ-_ZEYdSlg9bA5lcDDybN0S4jdUuBuiSijVBIXSSUAKOE4K3H7vM4-" />
+            </div>
+            <div
+                class="invitation-card p-12 md:p-20 relative z-10 bg-[#161616] border border-white/20 rounded-sm shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                    <div class="space-y-16">
+                        <div class="group input-group relative">
+                            <label
+                                class="block text-[10px] uppercase tracking-[0.4em] text-zinc-400 mb-2">Nombre</label>
+                            <input
+                                class="w-full text-2xl font-serif italic py-4 placeholder-zinc-800 focus:placeholder-transparent"
+                                placeholder="Your Name Here" type="text" />
+                        </div>
+                        <div class="group input-group relative">
+                            <label class="block text-[10px] uppercase tracking-[0.4em] text-zinc-400 mb-2">Tu
+                                Marca</label>
+                            <input
+                                class="w-full text-2xl font-serif italic py-4 placeholder-zinc-800 focus:placeholder-transparent"
+                                placeholder="Your Brand" type="text" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col relative">
+                        <div class="group input-group h-full">
+                            <label class="block text-[10px] uppercase tracking-[0.4em] text-zinc-400 mb-2">The
+                                Vision</label>
+                            <textarea
+                                class="w-full text-xl font-sans font-light py-4 h-full min-h-[250px] resize-none placeholder-zinc-800 focus:placeholder-transparent"
+                                placeholder="Tell us about the dream..."></textarea>
+                        </div>
+                        <div class="absolute -right-12 -bottom-20 rsvp-stamp z-30 pointer-events-none select-none">
+                            RSVP: CULTURA REQUIRED
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="mt-32 max-w-6xl mx-auto">
+            <button onclick="window.location.href='/thank-you.html'"
+                class="cta-glitch w-full py-16 border-y border-white/10 group relative overflow-hidden transition-all duration-500">
+                <div class="relative z-10 flex items-center justify-center gap-6">
+                    <span
+                        class="font-display font-black text-6xl md:text-8xl tracking-tight uppercase group-hover:italic">SEND
+                        THE INVITACIÓN</span>
+                    <span
+                        class="material-symbols-outlined text-4xl md:text-6xl group-hover:translate-x-4 transition-transform">arrow_forward</span>
+                </div>
+            </button>
+        </div>
+    </main>
+    <footer class="px-12 pt-20 pb-10 border-t border-white/5 flex flex-col gap-16">
+        <div class="flex flex-col md:flex-row justify-between items-end gap-10 w-full">
+            <div class="space-y-4">
+                <div class="flex gap-2">
+                    <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                    <p class="text-[9px] uppercase tracking-[0.3em] text-zinc-400">Current Location: Los Angeles, CA</p>
+                </div>
+                <p class="text-xs text-zinc-600">© 2024 HOLA PRIMA AGENCY. ALL RIGHTS RESERVED.</p>
+            </div>
+            <div class="text-right">
+                <h2
+                    class="font-display text-4xl md:text-6xl opacity-20 hover:opacity-100 transition-opacity duration-500 uppercase tracking-tighter">
+                    Big Hoop Energy</h2>
+            </div>
+        </div>
+        <div class="w-full border-t border-white/5 pt-10 text-center">
+            <p class="font-mono text-[9px] md:text-[10px] tracking-[0.8em] text-zinc-500 uppercase">
+                CERTIFIED WOMAN OWNED BUSINESS &amp; CERTIFIED MINORITY OWNED BUSINESS
+            </p>
+        </div>
+    </footer>
+    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+        <filter id="wave-distortion">
+            <feTurbulence baseFrequency="0.01 0.1" numOctaves="2" result="noise" type="fractalNoise">
+                <animate attributeName="baseFrequency" dur="2s" repeatCount="indefinite"
+                    values="0.01 0.1; 0.01 0.15; 0.01 0.1"></animate>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="12"></feDisplacementMap>
+        </filter>
+    </svg>
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mousedown', () => cursor.style.transform = 'scale(0.8)');
+        document.addEventListener('mouseup', () => cursor.style.transform = 'scale(1)');
+    </script>
+
+</body>
+
+</html>

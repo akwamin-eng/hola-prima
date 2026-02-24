@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth text-white">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hola Prima | The Receipts Portfolio</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&amp;family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@300;400;700;900&amp;family=La+Belle+Aurore&amp;family=Pinyon+Script&amp;family=Oswald:wght@700&amp;family=JetBrains+Mono:wght@300&amp;family=Shadows+Into+Light&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'marquee': 'marquee 40s linear infinite',
+                        'preloader-fade-out': 'preloaderFade 1s ease-in 5s forwards',
+                        'ink-bleed': 'inkBleed 3s ease-out forwards 1s',
+                        'gold-flow': 'goldFlow 10s ease-in-out infinite alternate',
+                        'glitch': 'glitch 0.2s linear 4.8s 3',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        preloaderFade: {
+                            '0%': { opacity: '1', visibility: 'visible' },
+                            '100%': { opacity: '0', visibility: 'hidden' }
+                        },
+                        inkBleed: {
+                            '0%': { opacity: '0', filter: 'blur(20px) contrast(200%)' },
+                            '100%': { opacity: '1', filter: 'blur(0px) contrast(100%)' }
+                        },
+                        goldFlow: {
+                            '0%': { transform: 'translate(-10%, -10%) scale(1)' },
+                            '100%': { transform: 'translate(10%, 10%) scale(1.1)' }
+                        },
+                        glitch: {
+                            '0%': { transform: 'translate(0)', 'clip-path': 'inset(0 0 0 0)' },
+                            '20%': { transform: 'translate(-5px, 2px)', 'text-shadow': '2px 0 red, -2px 0 blue' },
+                            '40%': { transform: 'translate(-2px, -2px)', 'clip-path': 'inset(10% 0 30% 0)' },
+                            '60%': { transform: 'translate(5px, 2px)', 'text-shadow': '-2px 0 red, 2px 0 blue' },
+                            '80%': { transform: 'translate(2px, -2px)', 'clip-path': 'inset(40% 0 10% 0)' },
+                            '100%': { transform: 'translate(0)', 'clip-path': 'inset(0 0 0 0)' }
+                        }
+                    },
+
+                    colors: {
+                        primary: "#0a0a0a",
+                        accent: "#eaff00",
+                        "hola-pink": "#ff00ff",
+                        "charcoal": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        condensed: ["Oswald", "sans-serif"],
+                        handwriting: ["La Belle Aurore", "cursive"],
+                        marker: ["Shadows Into Light", "cursive"],
+                        script: ["Pinyon Script", "cursive"],
+                        serif: ["Instrument Serif", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    }
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                cursor: none;
+                background-color: #0a0a0a;
+                scroll-behavior: smooth;
+            }
+        }
+        .film-grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+        }
+        .custom-cursor {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease-out, border-radius 0.3s ease;
+            filter: blur(4px);
+        }
+        .spread-container:hover .spread-image {
+            filter: grayscale(0) contrast(1.1);
+            transform: scale(1.02);
+        }
+        .spread-image {
+            filter: grayscale(1);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+        .film-strip {
+            background: #111;
+            padding: 40px 15px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            border-left: 1px solid #222;
+            border-right: 1px solid #222;
+        }
+        .film-strip::before, .film-strip::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 25px;
+            background-image: radial-gradient(circle, #0a0a0a 40%, transparent 45%);
+            background-size: 30px 30px;
+            background-repeat: repeat-x;
+        }
+        .film-strip::before { top: 8px; }
+        .film-strip::after { bottom: 8px; }
+        .perforated-edge {
+            mask-image: radial-gradient(circle at 15px 0, transparent 8px, black 8px),
+                        radial-gradient(circle at 15px 100%, transparent 8px, black 8px);
+            mask-repeat: repeat-x;
+            mask-size: 30px 100%;
+        }.rgb-glitch {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 25;
+            background: inherit;
+        }
+        .project-card:hover .rgb-glitch {
+            opacity: 1;
+        }
+        .rgb-glitch::before, .rgb-glitch::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: inherit;
+            mix-blend-mode: screen;
+        }
+        .rgb-glitch::before {
+            left: 2px;
+            text-shadow: 2px 0 #ff00ff;
+            box-shadow: 2px 0 #ff00ff;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+            animation: glitch-anim-1 0.4s infinite linear alternate-reverse;
+        }
+        .rgb-glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00ffff;
+            box-shadow: -2px 0 #00ffff;
+            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+            animation: glitch-anim-2 0.4s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim-1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { transform: translate(0); }
+            20% { transform: translate(2px, -2px); }
+            40% { transform: translate(2px, 2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(-2px, 2px); }
+            100% { transform: translate(0); }
+        }
+        .scanlines {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 0, 0, 0.4) 51%
+            );
+            background-size: 100% 4px;
+            z-index: 30;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover .scanlines {
+            opacity: 1;
+            animation: scanline-scroll 0.2s linear infinite;
+        }
+        @keyframes scanline-scroll {
+            from { background-position: 0 0; }
+            to { background-position: 0 4px; }
+        }
+        .media-vault {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+            display: flex;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .media-vault::-webkit-scrollbar {
+            display: none;
+        }
+        .tape {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            width: 120px;
+            height: 35px;
+            position: absolute;
+            transform: rotate(-3deg);
+            z-index: 40;
+            border-left: 2px solid rgba(255,255,255,0.1);
+            border-right: 2px solid rgba(255,255,255,0.1);
+        }
+        .ink-sticker {
+            font-family: 'JetBrains Mono', monospace;
+            border: 2px solid currentColor;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transform: rotate(-15deg);
+            display: inline-block;
+            z-index: 40;
+        }
+    </style>
+
+    <meta name="description"
+        content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+    <meta property="og:title" content="Hola Prima | The Receipts Portfolio" />
+    <meta property="og:description"
+        content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+    <meta property="og:image" content="https://holaprima.com/images/hola-prima-logo.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+
+    <link rel="icon" type="image/png" sizes="256x256" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+
+</head>
+
+<body class="text-white overflow-x-hidden selection:bg-primary selection:text-black">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="preloader fixed inset-0 bg-black flex items-center justify-center overflow-hidden animate-preloader-fade-out"
+        style="z-index: 99999;">
+        <div class="film-grain"></div>
+        <div class="absolute inset-0 liquid-gold-bg opacity-40 animate-gold-flow"></div>
+        <div class="relative z-10 text-center flex flex-col items-center">
+            <div class="mb-8 animate-ink-bleed opacity-0 animate-glitch">
+                <div
+                    class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-2 shadow-[0_0_50px_rgba(197,160,89,0.3)]">
+                    <img alt="Hola Prima Logo Graphic" class="w-full h-full object-cover rounded-full "
+                        src="/images/hola-prima-logo.png" />
+                </div>
+            </div>
+            <div class="overflow-hidden">
+                <p class="font-serif italic text-gold text-2xl md:text-3xl tracking-widest animate-ink-bleed opacity-0"
+                    style="animation-delay: 2s;">
+                    CARGANDO CULTURA...
+                </p>
+            </div>
+        </div>
+        <svg aria-hidden="true" style="position: absolute; width: 0; height: 0;">
+            <defs>
+                <filter id="liquid-gold-filter">
+                    <feTurbulence baseFrequency="0.015" numOctaves="3" result="noise" type="fractalNoise">
+                        <animate attributeName="baseFrequency" dur="20s" repeatCount="indefinite"
+                            values="0.015;0.025;0.015"></animate>
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="80" xChannelSelector="R"
+                        yChannelSelector="G"></feDisplacementMap>
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+
+
+    <div class="film-grain"></div>
+    <div class="custom-cursor hidden lg:block" id="cursor"></div>
+    <nav
+        class="fixed top-0 left-0 w-full z-50 px-12 py-8 flex justify-between items-center bg-transparent mix-blend-difference text-white">
+        <div class="flex gap-12 text-[11px] tracking-[0.2em] font-medium uppercase font-sans text-white">
+            <a class="hover:text-primary transition-colors relative group" href="/index.html">
+                Home
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a class="hover:text-primary transition-colors relative group" href="/receipts.html">
+                The Receipts
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+        <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+            <a href="/index.html"
+                class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center p-1 hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer">
+                <img alt="Hola Prima Logo" class="w-full h-full object-cover rounded-full"
+                    src="/images/hola-prima-logo.png" />
+            </a>
+        </div>
+        <div class="flex gap-6 items-center">
+            <a class="hover:text-primary transition-colors duration-300" href="/contact.html">
+                <span class="material-symbols-outlined text-xl">mail</span>
+            </a>
+            <a class="hover:text-primary transition-colors duration-300" href="#">
+                <span class="font-display text-sm tracking-widest">LN</span>
+            </a>
+            <a class="hover:text-primary transition-colors duration-300" href="#">
+                <span class="font-display text-sm tracking-widest">IG</span>
+            </a>
+        </div>
+    </nav>
+    <header class="pt-48 pb-32 px-6 lg:px-24 relative overflow-hidden">
+        <div class="absolute -right-20 top-20 opacity-10 pointer-events-none select-none">
+            <h2 class="text-[30vw] font-condensed uppercase leading-none text-outline">EST. 2024</h2>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <h1
+                class="text-7xl md:text-7xl md:text-[10vw] lg:text-[12vw] lg:text-[18vw] font-condensed uppercase leading-[0.75] mb-16 tracking-tighter italic">
+                The<br />Receipts!
+            </h1>
+            <div class="max-w-3xl border-l-4 border-accent pl-12 py-4">
+                <p class="text-2xl md:text-3xl font-sans leading-tight text-gray-200">
+                    Expect <span class="text-white font-black italic">atención</span> with stand-out experiences filled
+                    with intentionality, innovation and flawless execution. We’re always excited to come alongside bold
+                    brands to bring diverse, imaginative, impactful ideas to life.
+                </p>
+                <div class="mt-8 flex items-center gap-4">
+                    <span class="ink-sticker text-accent text-xs">MADE IN LA</span>
+                    <span class="ink-sticker text-hola-pink text-xs uppercase">BIG HOOP ENERGY</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="featured-cases space-y-0">
+            <div
+                class="spread-container relative h-screen w-full overflow-hidden sticky top-0 border-b border-white/10">
+                <img alt="Becky G Launch" class="spread-image absolute inset-0 w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuCxfDNAihrz83FCjg7nQiQoSWIexsDGzsksueG029aiUvtNz20bXbKX268YzVX0adgjxSTlm-0PurZt7OG2P1paZwRqDJd9xQsKnfT2OejGmyUhbvU8qQT8duACLuJdi790DyP7vh1hvVoeLz_p8JX-XcMuIsWJxNDJu-iKTLfFoaAfAwev9MGLkdSBMnQ0_iZeClPebUJhb9mP5IFc-eLqU6sTFXeZAMWWcg6RGHitd5QXD7BSUFia76dgNzaymukhF9DYWcnGa7" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60">
+                </div>
+                <div class="absolute inset-0 p-12 lg:p-24 flex flex-col justify-end">
+                    <div class="max-w-6xl w-full flex flex-col md:flex-row md:items-end justify-between gap-8">
+                        <div>
+                            <span class="text-accent font-mono text-sm tracking-widest mb-4 block uppercase">01 /
+                                FEATURED CASE</span>
+                            <h2 class="text-7xl lg:text-[10rem] font-condensed uppercase leading-none tracking-tighter">
+                                BECKY G<br />COLLAB</h2>
+                        </div>
+                        <div class="pb-4">
+                            <a class="group flex items-center gap-4 border border-white px-8 py-5 hover:bg-white hover:bg-white hover:text-black transition-all duration-500 uppercase font-bold tracking-[0.3em] text-xs"
+                                href="/events/fabletics-becky-g.html">
+                                View Case Study
+                                <span
+                                    class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute top-24 right-24 hidden lg:block">
+                    <p class="text-[5vw] font-handwriting text-accent/40 -rotate-12">Inevitable.</p>
+                </div>
+            </div>
+            <div
+                class="spread-container relative h-screen w-full overflow-hidden sticky top-0 border-b border-white/10">
+                <img alt="LA Pride" class="spread-image absolute inset-0 w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4hLnJzgTVFCURjPS8fRKh5Qg8hyaBLVUtm69l0Z0FkQyvm_v9x8vNZXC-TNEEFXNnRe1Ue3BCukXRLvNo_dv_Uv5QwwHejwaKDevfEEg9nLccZSy9jS0fJorfVmWQCVxgekV_Deng9iAxGMOLJcAljCeE7tlTXx6QvpS845jL4247wHerqJYtj42g2HPM0HikHcpZfhLK8-yc_CBAQpyNAGakG6c7wCVmkPm6JzNy9jRqhVuRwx4q8jfJwVPn6nsRRB-UmGC9CRHd" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60">
+                </div>
+                <div class="absolute inset-0 p-12 lg:p-24 flex flex-col justify-end">
+                    <div class="max-w-6xl w-full flex flex-col md:flex-row md:items-end justify-between gap-8">
+                        <div>
+                            <span class="text-accent font-mono text-sm tracking-widest mb-4 block uppercase">02 /
+                                FEATURED CASE</span>
+                            <h2 class="text-7xl lg:text-[10rem] font-condensed uppercase leading-none tracking-tighter">
+                                PRIDE<br />BLOCK PARTY</h2>
+                        </div>
+                        <div class="pb-4">
+                            <a class="group flex items-center gap-4 border border-white px-8 py-5 hover:bg-white hover:bg-white hover:text-black transition-all duration-500 uppercase font-bold tracking-[0.3em] text-xs"
+                                href="/events/la-pride.html">
+                                View Case Study
+                                <span
+                                    class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="spread-container relative h-screen w-full overflow-hidden sticky top-0 border-b border-white/10">
+                <img alt="Oscar Maydon" class="spread-image absolute inset-0 w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR6MexLcvH12C-eVLm-uc_u6djRRqT7yxNy9Mgkxb2pSfcSmMC914Q5CaiOxpcYMoTb5rL3BxWBxng3Bk7-4pys6_IuTczLiQlqeXv8BUpKM62Jc5qDV6pwMkcDmYSs3MX5EqpqjZvHzGJ2fxJmhnpQNNPgi4AYqAOhxgCchVuSz6hXYaMwkCAvbxLtsGwkFejyCT1TD2JLs0nFbUXj6vqFuD3OCDUXV8X0Gj2opbU9Zcpf1hkt5y7DoQn0yWIhY7hcSmvH9o3ewwu" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60">
+                </div>
+                <div class="absolute inset-0 p-12 lg:p-24 flex flex-col justify-end">
+                    <div class="max-w-6xl w-full flex flex-col md:flex-row md:items-end justify-between gap-8">
+                        <div>
+                            <span class="text-accent font-mono text-sm tracking-widest mb-4 block uppercase">03 /
+                                FEATURED CASE</span>
+                            <h2 class="text-7xl lg:text-[10rem] font-condensed uppercase leading-none tracking-tighter">
+                                OSCAR<br />MAYDON</h2>
+                        </div>
+                        <div class="pb-4">
+                            <a class="group flex items-center gap-4 border border-white px-8 py-5 hover:bg-white hover:bg-white hover:text-black transition-all duration-500 uppercase font-bold tracking-[0.3em] text-xs"
+                                href="/events/oscar-maydon.html">
+                                View Case Study
+                                <span
+                                    class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="spread-container relative h-screen w-full overflow-hidden sticky top-0 border-b border-white/10 bg-charcoal">
+                <img alt="Blue Diamond Gala" class="spread-image absolute inset-0 w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4hLnJzgTVFCURjPS8fRKh5Qg8hyaBLVUtm69l0Z0FkQyvm_v9x8vNZXC-TNEEFXNnRe1Ue3BCukXRLvNo_dv_Uv5QwwHejwaKDevfEEg9nLccZSy9jS0fJorfVmWQCVxgekV_Deng9iAxGMOLJcAljCeE7tlTXx6QvpS845jL4247wHerqJYtj42g2HPM0HikHcpZfhLK8-yc_CBAQpyNAGakG6c7wCVmkPm6JzNy9jRqhVuRwx4q8jfJwVPn6nsRRB-UmGC9CRHd" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60">
+                </div>
+                <div class="absolute inset-0 p-12 lg:p-24 flex flex-col justify-end">
+                    <div class="max-w-6xl w-full flex flex-col md:flex-row md:items-end justify-between gap-8">
+                        <div>
+                            <span class="text-accent font-mono text-sm tracking-widest mb-4 block uppercase">04 /
+                                FEATURED CASE</span>
+                            <h2 class="text-7xl lg:text-[10rem] font-condensed uppercase leading-none tracking-tighter">
+                                BLUE DIAMOND<br />GALA</h2>
+                        </div>
+                        <div class="pb-4">
+                            <a class="group flex items-center gap-4 border border-white px-8 py-5 hover:bg-white hover:bg-white hover:text-black transition-all duration-500 uppercase font-bold tracking-[0.3em] text-xs"
+                                href="/events/blue-diamond-gala.html">
+                                View Case Study
+                                <span
+                                    class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-40 bg-charcoal overflow-hidden relative">
+            <div class="absolute top-0 left-0 w-full opacity-10 pointer-events-none select-none -translate-y-1/2">
+                <h2 class="text-[25vw] font-condensed uppercase leading-none text-outline whitespace-nowrap">MORE
+                    RECEIPTS • MORE RECEIPTS • MORE RECEIPTS</h2>
+            </div>
+            <div class="px-6 lg:px-24 mb-20 relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-baseline gap-4">
+                    <h2 class="text-6xl lg:text-9xl font-condensed uppercase italic">Media Vault</h2>
+                    <p class="font-mono text-xs uppercase tracking-[0.3em] text-gray-500">Horizontal Drag / Scan to Play
+                    </p>
+                </div>
+            </div>
+            <div class="media-vault gap-32 px-6 lg:px-24 py-20 cursor-grab active:cursor-grabbing" id="mediaVault">
+                <div class="shrink-0 w-[350px] lg:w-[550px] relative project-card">
+                    <div class="tape top-[-30px] left-[40%] parallax-sticker" data-depth="0.3"></div>
+                    <div class="film-strip perforated-edge">
+                        <div class="aspect-[4/5] bg-black overflow-hidden relative group">
+                            <img alt="Cafe Pop-Up"
+                                class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuCxfDNAihrz83FCjg7nQiQoSWIexsDGzsksueG029aiUvtNz20bXbKX268YzVX0adgjxSTlm-0PurZt7OG2P1paZwRqDJd9xQsKnfT2OejGmyUhbvU8qQT8duACLuJdi790DyP7vh1hvVoeLz_p8JX-XcMuIsWJxNDJu-iKTLfFoaAfAwev9MGLkdSBMnQ0_iZeClPebUJhb9mP5IFc-eLqU6sTFXeZAMWWcg6RGHitd5QXD7BSUFia76dgNzaymukhF9DYWcnGa7" />
+                            <div class="rgb-glitch"></div>
+                            <div class="scanlines"></div>
+                            <div
+                                class="absolute top-4 left-4 bg-black/80 px-2 py-1 font-mono text-[8px] tracking-widest uppercase z-30">
+                                ARCHIVE_FILM_001</div>
+                        </div>
+                        <div class="mt-8 px-2 flex justify-between items-end">
+                            <h3 class="font-marker text-white text-5xl -rotate-2 tracking-tight">Fabletics Cafe</h3>
+                            <span class="ink-sticker text-accent text-[8px] rotate-3 parallax-sticker"
+                                data-depth="0.15">POLAROID</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shrink-0 w-[350px] lg:w-[550px] relative project-card pt-20">
+                    <div class="film-strip perforated-edge">
+                        <div class="aspect-[4/5] bg-black overflow-hidden relative group">
+                            <img alt="Retail Summit"
+                                class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAToQkGlSCYAyEN-9cajENMYBVlQnks1lYlhNrGS4Z9mCqpm1YfmaI1DZXgkBEKvnbfYTNQN6jcIZv-lo7YqKSgeMlyuewnjBlVOoc01prxyRRT5XpiBufxo1-cy8W2JEe90bG70KaywROaRL1VND_HsWQ3VZqCZT6DdWfSqUcEqRCs4rTk2UoOuMT45cql2EI4GxqHrr0J6AWcreTfREHa_lrBcWGQ3VY6VYUZwrpB9431mmP5Q1pnazcgsQRvfA-Z_UiL9RWvfWH9" />
+                            <div class="rgb-glitch"></div>
+                            <div class="scanlines"></div>
+                            <div
+                                class="absolute top-4 left-4 bg-black/80 px-2 py-1 font-mono text-[8px] tracking-widest uppercase z-30">
+                                SUMMIT_LOG_02</div>
+                        </div>
+                        <div class="mt-8 px-2">
+                            <h3 class="font-marker text-white text-5xl rotate-2 tracking-tight">Retail Summit</h3>
+                        </div>
+                    </div>
+                    <div class="tape bottom-[-15px] right-[10%] opacity-60 rotate-12 parallax-sticker"
+                        data-depth="0.45"></div>
+                </div>
+                <div class="shrink-0 w-[350px] lg:w-[550px] relative project-card">
+                    <div class="ink-sticker text-hola-pink text-[10px] top-4 right-[-20px] absolute z-50 parallax-sticker"
+                        data-depth="0.6">BIG HOOP ENERGY</div>
+                    <div class="film-strip perforated-edge">
+                        <div class="aspect-[4/5] bg-black overflow-hidden relative group">
+                            <img alt="WSS Reimagined"
+                                class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA4FIdsgICvuHhxhw5RPmy5fAaQrEBONAA3KumPjGYHQj_v9D8jbdC32OsAUOFkV_CzwujNQRj1QCZlXKHHPZrIzj6YuK6EhLu9BbrYV7Ubhg8VUQR2GorKtdcrj50AMICIZc4tm5tdzHVdp4J3C1Ii2ry7oIzJWyKdqW4aXNrZTfkVn17VsI1r7TUxaxnkNC2MDMmsPpH8QVKt0ZeG59QMhzV4ADtjTHizZYvqN8t-EnKEaFqGgKEhqSVZlwk8VKBW8V4KihgcH31" />
+                            <div class="rgb-glitch"></div>
+                            <div class="scanlines"></div>
+                            <div
+                                class="absolute top-4 left-4 bg-black/80 px-2 py-1 font-mono text-[8px] tracking-widest uppercase z-30">
+                                WSS_RAW_CUT</div>
+                        </div>
+                        <div class="mt-8 px-2">
+                            <h3 class="font-marker text-white text-5xl -rotate-1 tracking-tight">WSS Reimagined</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="shrink-0 w-[350px] lg:w-[550px] relative project-card pt-12">
+                    <div class="tape top-[0px] left-[-30px] rotate-[-45deg] parallax-sticker" data-depth="0.35"></div>
+                    <div class="film-strip perforated-edge">
+                        <div class="aspect-[4/5] bg-black overflow-hidden relative group">
+                            <img alt="HHM Studio"
+                                class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhIl-f0c7g-CO2olOTFzYaTUKOTgQjB0aVUYlkV2LwBLkS9WxPQkMZhJtA9dvvnCwYcfMTL47EmB-D1LSsuEosdTRxT4S3LJEBXC1EJ7zzNJ8quH2kDkoDXwsd6O0Pj0V5w5ly5BloV4HG7PgtgQoKvz7VUzMBwRdf09iw41S0vwyQ5taG13AvqsObK-06HCIBbx5NCzRgghLt2UvkGnruAKOsonl6r6TrSDuPw58nChto7uN_MR1wdyAVQpWYXpZYCKVc_yfySO3Z" />
+                            <div class="rgb-glitch"></div>
+                            <div class="scanlines"></div>
+                            <div
+                                class="absolute top-4 left-4 bg-black/80 px-2 py-1 font-mono text-[8px] tracking-widest uppercase z-30">
+                                VIBE_04_MASTER</div>
+                        </div>
+                        <div class="mt-8 px-2">
+                            <h3 class="font-marker text-white text-5xl rotate-3 tracking-tight">Studio Mixer</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="shrink-0 w-[350px] lg:w-[550px] relative project-card pt-24">
+                    <div class="film-strip perforated-edge">
+                        <div class="aspect-[4/5] bg-black overflow-hidden relative group">
+                            <img alt="Five Nights"
+                                class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAToQkGlSCYAyEN-9cajENMYBVlQnks1lYlhNrGS4Z9mCqpm1YfmaI1DZXgkBEKvnbfYTNQN6jcIZv-lo7YqKSgeMlyuewnjBlVOoc01prxyRRT5XpiBufxo1-cy8W2JEe90bG70KaywROaRL1VND_HsWQ3VZqCZT6DdWfSqUcEqRCs4rTk2UoOuMT45cql2EI4GxqHrr0J6AWcreTfREHa_lrBcWGQ3VY6VYUZwrpB9431mmP5Q1pnazcgsQRvfA-Z_UiL9RWvfWH9" />
+                            <div class="rgb-glitch"></div>
+                            <div class="scanlines"></div>
+                        </div>
+                        <div class="mt-8 px-2">
+                            <h3 class="font-marker text-white text-5xl -rotate-3 tracking-tight">Movie Screening</h3>
+                        </div>
+                    </div>
+                    <div class="tape bottom-4 left-[-15px] opacity-40 parallax-sticker" data-depth="0.25"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-black pt-40 pb-0 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full opacity-5 pointer-events-none select-none">
+            <h2 class="text-[40vw] font-condensed uppercase leading-none text-outline text-white/20 whitespace-nowrap">
+                CHISME</h2>
+        </div>
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-24 relative z-10">
+            <h2 class="text-[8vw] leading-none font-display font-black text-center mb-24 uppercase">
+                Say Hola! Contact Us
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 bg-white/5 mb-32 overflow-hidden border border-white/10">
+                <div class="aspect-square md:aspect-auto">
+                    <img alt="Team Prima"
+                        class="w-full h-full object-cover filter grayscale brightness-110 contrast-110 hover:grayscale-0 transition-all duration-1000"
+                        src="/images/contact1.jpg" />
+                </div>
+                <div
+                    class="bg-hola-pink p-12 lg:p-20 flex flex-col justify-center items-start relative overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 border-2 border-black w-8 h-8 flex items-center justify-center font-bold text-black cursor-pointer hover:bg-black hover:text-white transition-colors">
+                        X</div>
+                    <h3 class="text-black font-condensed text-5xl lg:text-7xl uppercase leading-[0.9] mb-8">
+                        JOIN LA FAMILIA
+                    </h3>
+                    <p
+                        class="text-black font-sans text-xs lg:text-sm font-black uppercase tracking-widest leading-relaxed mb-10 max-w-sm">
+                        SIGN UP FOR EXCLUSIVE UPDATES, EVENTS, AND ALL THE CHISME TEAM PRIMA HAS BEEN DREAMING UP!
+                    </p>
+                    <form class="w-full max-w-sm flex flex-col gap-6" action="#" method="POST"
+                        onsubmit="event.preventDefault(); alert('Signed up successfully!');">
+                        <input type="email" placeholder="YOUR EMAIL ADDRESS" required
+                            class="bg-transparent border-0 border-b-2 border-black text-black placeholder-black/50 px-0 py-2 focus:outline-none focus:ring-0 focus:border-black font-sans font-bold text-sm tracking-widest w-full" />
+                        <button type="submit"
+                            class="bg-black text-white px-8 py-4 font-sans font-bold text-xs uppercase tracking-[0.3em] hover:bg-white hover:bg-white hover:text-black transition-colors self-start shrink-0">
+                            SIGN UP
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center space-y-16">
+                <div
+                    class="flex flex-wrap justify-center items-center gap-10 text-[0.7rem] uppercase tracking-[0.4em] font-black text-gray-500">
+                    <a class="hover:text-accent transition-all hover:tracking-[0.6em]"
+                        href="https://www.instagram.com/holaprimagram">Instagram</a>
+                    <span class="text-accent">•</span>
+                    <a class="hover:text-accent transition-all hover:tracking-[0.6em]"
+                        href="https://www.linkedin.com/company/holaprima/">LinkedIn</a>
+                    <span class="text-accent">•</span>
+                    <a class="hover:text-accent transition-all hover:tracking-[0.6em]"
+                        href="mailto:info@holaprima.com">Email Us</a>
+                </div>
+                <div class="pb-16 space-y-6">
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                        <span class="ink-sticker text-white/40 text-[9px] border-white/20">WOSB CERTIFIED</span>
+                        <p class="font-mono text-[0.65rem] tracking-[0.3em] text-gray-400 uppercase">
+                            HOLA PRIMA AGENCY LLC
+                        </p>
+                        <span class="ink-sticker text-white/40 text-[9px] border-white/20">MBE CERTIFIED</span>
+                    </div>
+                    <div class="opacity-20 mt-10">
+                        <p class="text-[0.5rem] uppercase tracking-[0.5em]">© 2024 Hola Prima Agency. All Rights
+                            Reserved. Big Hoop Energy Always.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full text-center py-10 border-t border-white/10 bg-black/50 backdrop-blur-sm">
+            <p class="font-mono text-[0.7rem] tracking-[0.8em] text-white/40 uppercase">
+                CERTIFIED WOMAN OWNED BUSINESS &amp; CERTIFIED MINORITY OWNED BUSINESS
+            </p>
+        </div>
+    </footer>
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(0.8)';
+            cursor.style.borderRadius = '30%';
+        });
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+            cursor.style.borderRadius = '50%';
+        });
+        let interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, .project-card, .film-strip');
+        interactiveElements.forEach(target => {
+            target.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursor.style.background = 'rgba(234, 255, 0, 0.4)';
+            });
+            target.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'rgba(255, 255, 255, 0.3)';
+            });
+        });
+        // Parallax logic for Featured Cases (Vertical)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const spreads = document.querySelectorAll('.spread-image');
+            spreads.forEach((spread, index) => {
+                const speed = 0.15;
+                const offset = (scrolled - (index * window.innerHeight)) * speed;
+                spread.style.transform = `scale(1.1) translateY(${offset}px)`;
+            });
+        });
+        // Media Vault: Drag, Elastic Scroll, and Z-axis Parallax
+        const vault = document.querySelector('.media-vault');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let velocity = 0;
+        let lastX = 0;
+        let lastTime = 0;
+        vault.addEventListener('mousedown', (e) => {
+            isDown = true;
+            vault.classList.add('active');
+            startX = e.pageX - vault.offsetLeft;
+            scrollLeft = vault.scrollLeft;
+            lastTime = Date.now();
+            lastX = e.pageX;
+            velocity = 0;
+            vault.style.scrollBehavior = 'auto';
+        });
+        vault.addEventListener('mouseleave', () => {
+            if (!isDown) return;
+            isDown = false;
+            applyMomentum();
+        });
+        vault.addEventListener('mouseup', () => {
+            if (!isDown) return;
+            isDown = false;
+            applyMomentum();
+        });
+        function applyMomentum() {
+            // Precise elastic momentum feel
+            vault.style.scrollBehavior = 'smooth';
+            const momentum = velocity * 450;
+            vault.scrollLeft += momentum;
+        }
+        vault.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - vault.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            vault.scrollLeft = scrollLeft - walk;
+            const now = Date.now();
+            const dt = now - lastTime;
+            const dx = e.pageX - lastX;
+            if (dt > 0) velocity = -dx / dt;
+            lastTime = now;
+            lastX = e.pageX;
+            // Subtle Z-axis depth parallax for stickers/tape
+            const stickers = document.querySelectorAll('.parallax-sticker');
+            stickers.forEach(sticker => {
+                const depth = parseFloat(sticker.getAttribute('data-depth')) || 0.2;
+                const moveX = (vault.scrollLeft * depth) * 0.1;
+                sticker.style.transform = `translateX(${-moveX}px) translateZ(${depth * 20}px)`;
+            });
+        });
+        vault.addEventListener('scroll', () => {
+            if (isDown) return;
+            const stickers = document.querySelectorAll('.parallax-sticker');
+            stickers.forEach(sticker => {
+                const depth = parseFloat(sticker.getAttribute('data-depth')) || 0.2;
+                const moveX = (vault.scrollLeft * depth) * 0.1;
+                sticker.style.transform = `translateX(${-moveX}px)`;
+            });
+        });
+    </script>
+
+</body>
+
+</html>
