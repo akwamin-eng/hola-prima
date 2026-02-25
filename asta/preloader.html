@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASTA | Intelligence Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FFFFFF",
+                        "background-light": "#F8F9FA",
+                        "background-dark": "#050505",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
+            50% { opacity: 0.5; transform: scale(0.9); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
+        }
+        @keyframes progress-line {
+            0% { width: 0%; left: 0; }
+            50% { width: 100%; left: 0; }
+            100% { width: 0%; left: 100%; }
+        }
+        .animate-pulse-dot {
+            animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .loading-bar {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+        .loading-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            background: #ffffff;
+            animation: progress-line 2.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+        }.preloader-fade-out {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark">
+<div class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background-dark transition-all duration-1000" id="preloader">
+<div class="relative flex flex-col items-center">
+<div class="flex items-baseline space-x-1">
+<span class="text-white text-6xl md:text-8xl font-black leading-none animate-pulse-dot">.</span>
+<h1 class="text-white text-6xl md:text-8xl font-black tracking-tight leading-none select-none">
+                    ASTA
+                </h1>
+</div>
+<div class="mt-8 overflow-hidden">
+<p class="text-zinc-500 dark:text-zinc-400 text-xs tracking-[0.4em] uppercase font-medium transform transition-all duration-700 delay-300">
+                    The Operating System for Truth
+                </p>
+</div>
+<div class="relative w-48 mt-12 opacity-40">
+<div class="loading-bar"></div>
+</div>
+</div>
+<div class="absolute bottom-12 left-0 right-0 flex justify-center">
+<div class="flex items-center space-x-3 text-[10px] tracking-[0.2em] text-zinc-600 dark:text-zinc-500 uppercase">
+<span>Accra</span>
+<span class="w-1 h-1 bg-zinc-700 rounded-full"></span>
+<span>Ghanaian Real Estate Intelligence</span>
+</div>
+</div>
+</div>
+<main class="min-h-screen flex flex-col items-center justify-center p-8 bg-background-light dark:bg-background-dark text-zinc-900 dark:text-zinc-100">
+<nav class="fixed top-0 left-0 right-0 p-8 flex justify-between items-center z-10">
+<div class="flex items-center space-x-1">
+<span class="font-black text-2xl text-zinc-900 dark:text-white">.ASTA</span>
+</div>
+<div class="flex items-center space-x-8 text-xs font-medium uppercase tracking-widest">
+<a class="hover:text-zinc-500 transition-colors" href="#">Platform</a>
+<a class="hover:text-zinc-500 transition-colors" href="#">Intelligence</a>
+<a class="hover:text-zinc-500 transition-colors" href="#">Contact</a>
+<button class="px-5 py-2 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-full text-[10px] tracking-widest font-bold">REQUEST ACCESS</button>
+</div>
+</nav>
+<section class="max-w-4xl text-center space-y-8">
+<h2 class="text-4xl md:text-7xl font-bold tracking-tight leading-[1.1]">
+                Real Estate Intelligence <br/>
+<span class="text-zinc-400 dark:text-zinc-600">for the Ghanaian Market.</span>
+</h2>
+<p class="text-zinc-500 dark:text-zinc-400 text-lg max-w-xl mx-auto font-light leading-relaxed">
+                Unlock actionable insights with Ghana's most comprehensive real estate data platform. Built for developers, investors, and institutions.
+            </p>
+<div class="pt-8">
+<button class="border border-zinc-200 dark:border-zinc-800 px-8 py-4 rounded-full text-xs font-bold tracking-widest uppercase hover:bg-zinc-900 dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300">
+                    Explore Dashboard
+                </button>
+</div>
+</section>
+<div class="fixed bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-zinc-100/50 dark:from-white/5 to-transparent pointer-events-none"></div>
+</main>
+<script>
+        // Simulate loading process
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            // Artificial delay to appreciate the preloader aesthetic
+            setTimeout(() => {
+                preloader.classList.add('preloader-fade-out');
+                // Allow scrolling after preloader is gone
+                setTimeout(() => {
+                    document.body.style.overflow = 'auto';
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 3500);
+        });
+    </script>
+
+</body></html>
