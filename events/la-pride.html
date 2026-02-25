@@ -155,13 +155,19 @@
     </style>
 
   <meta name="description"
-    content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+    content="Hola Prima produced the LA Pride Block Party — a full takeover on Hollywood Blvd celebrating community, culture, and perreo. Inside look at the activations, stage design, and crowd energy." />
+  <link rel="canonical" href="https://holaprima.com/events/la-pride.html" />
   <meta property="og:title" content="Hola Prima | LA Pride Block Party" />
   <meta property="og:description"
-    content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+    content="Inside the LA Pride Block Party produced by Hola Prima — community, cultura, and perreo on Hollywood Blvd. Full event coverage and activations." />
   <meta property="og:image" content="https://holaprima.com/images/hola-prima-logo.png" />
+  <meta property="og:url" content="https://holaprima.com/events/la-pride.html" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hola Prima | LA Pride Block Party" />
+  <meta name="twitter:description"
+    content="Inside the LA Pride Block Party — community, cultura, and perreo on Hollywood Blvd. Produced by Hola Prima." />
+  <meta name="twitter:image" content="https://holaprima.com/images/hola-prima-logo.png" />
 
 
   <link rel="icon" type="image/png" sizes="256x256" href="/images/favicon.png">
@@ -213,31 +219,95 @@
 
   <div class="film-grain"></div>
   <nav
-    class="fixed top-0 w-full z-[100] p-8 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent">
-    <div class="flex gap-12 text-[11px] tracking-[0.2em] font-medium uppercase font-sans">
-      <a class="hover:text-primary transition-colors relative group" href="/index.html">
-        Home
-        <span
-          class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
-      </a>
-      <a class="hover:text-primary transition-colors relative group" href="#">
-        LA Pride 2024
-        <span
-          class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
-      </a>
+    class="fixed top-0 w-full z-[100] px-6 md:px-8 py-5 md:py-8 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent">
+    <div class="hidden md:flex gap-12 text-[11px] tracking-[0.2em] font-medium uppercase font-sans">
+      <a class="hover:text-primary transition-colors relative group" href="/index.html">Home<span
+          class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span></a>
+      <a class="hover:text-primary transition-colors relative group" href="#">LA Pride 2024<span
+          class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span></a>
     </div>
+    <div class="md:hidden w-10"></div>
     <div class="absolute left-1/2 -translate-x-1/2 top-8">
-      <a href="/index.html"><img alt="Hola Prima Logo" class="h-10 lg:h-14 " src="/images/hola-prima-logo.png" /></a>
+      <a href="/index.html"><img alt="Hola Prima Logo" class="h-9 md:h-14" src="/images/hola-prima-logo.png" /></a>
     </div>
-    <div class="flex gap-6 items-center">
-      <a class="hover:text-accent transition-colors" href="#"><span
+    <div class="hidden md:flex gap-6 items-center">
+      <a class="hover:text-accent transition-colors" href="/contact.html"><span
           class="material-symbols-outlined text-lg">mail</span></a>
-      <a class="hover:text-accent transition-colors" href="#"><span
+      <a class="hover:text-accent transition-colors" href="https://www.linkedin.com/company/holaprima/"><span
           class="material-symbols-outlined text-lg">share</span></a>
-      <a class="hover:text-accent transition-colors" href="#"><span
+      <a class="hover:text-accent transition-colors" href="https://www.instagram.com/holaprimagram"><span
           class="material-symbols-outlined text-lg">camera</span></a>
     </div>
+    <button id="hp-menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 cursor-pointer z-[210] relative"
+      aria-label="Open menu" aria-expanded="false">
+      <span class="hp-bar block w-6 h-[1.5px] bg-white transition-all duration-400 origin-center"></span>
+      <span class="hp-bar block w-6 h-[1.5px] bg-white transition-all duration-400"></span>
+      <span class="hp-bar block w-6 h-[1.5px] bg-white transition-all duration-400 origin-center"></span>
+    </button>
   </nav>
+  <div id="hp-mobile-nav" aria-hidden="true"
+    style="position:fixed;inset:0;z-index:200;background:rgba(5,5,5,0.97);backdrop-filter:blur(20px);clip-path:inset(0 0 100% 0);transition:clip-path 0.6s cubic-bezier(0.77,0,0.18,1);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:80px 40px 60px;overflow:hidden;">
+    <div
+      style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:70vw;height:60vh;background:radial-gradient(ellipse at 50% 0%,rgba(255,0,255,0.14) 0%,transparent 70%);pointer-events:none;">
+    </div>
+    <p id="hp-current-page"
+      style="font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:48px;font-family:monospace;">
+    </p>
+    <nav style="width:100%;">
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;">
+        <li class="hp-link-item" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);"><a
+            href="/index.html" class="hp-overlay-link"
+            style="display:block;padding:22px 0;font-size:clamp(2.2rem,10vw,3.5rem);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;color:white;text-decoration:none;transform:translateY(60px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1),opacity 0.55s,color 0.3s;"
+            data-page="index.html">Home</a></li>
+        <li class="hp-link-item" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);"><a
+            href="/servicios.html" class="hp-overlay-link"
+            style="display:block;padding:22px 0;font-size:clamp(2.2rem,10vw,3.5rem);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;color:white;text-decoration:none;transform:translateY(60px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1),opacity 0.55s,color 0.3s;"
+            data-page="servicios.html">Our Servicios</a></li>
+        <li class="hp-link-item" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);"><a
+            href="/receipts.html" class="hp-overlay-link"
+            style="display:block;padding:22px 0;font-size:clamp(2.2rem,10vw,3.5rem);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;color:white;text-decoration:none;transform:translateY(60px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1),opacity 0.55s,color 0.3s;"
+            data-page="receipts.html">The Receipts</a></li>
+        <li class="hp-link-item" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);"><a
+            href="/contact.html" class="hp-overlay-link"
+            style="display:block;padding:22px 0;font-size:clamp(2.2rem,10vw,3.5rem);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;color:white;text-decoration:none;transform:translateY(60px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1),opacity 0.55s,color 0.3s;"
+            data-page="contact.html">Say Hola</a></li>
+      </ul>
+    </nav>
+    <div
+      style="margin-top:48px;display:flex;gap:28px;align-items:center;transform:translateY(20px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1) 0.45s,opacity 0.55s 0.45s;"
+      id="hp-socials-row">
+      <a href="https://www.instagram.com/holaprimagram"
+        style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;"
+        onmouseover="this.style.color='#ff00ff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Instagram</a>
+      <span style="width:20px;height:1px;background:rgba(255,255,255,0.15);"></span>
+      <a href="https://www.linkedin.com/company/holaprima/"
+        style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;"
+        onmouseover="this.style.color='#ff00ff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">LinkedIn</a>
+      <span style="width:20px;height:1px;background:rgba(255,255,255,0.15);"></span>
+      <a href="mailto:info@holaprima.com"
+        style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;"
+        onmouseover="this.style.color='#ff00ff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Email</a>
+    </div>
+    <button id="hp-menu-close" aria-label="Close menu"
+      style="position:absolute;top:28px;right:32px;width:44px;height:44px;background:transparent;border:1px solid rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;"
+      onmouseover="this.style.background='rgba(255,0,255,0.15)';this.style.borderColor='#ff00ff'"
+      onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,0.15)'">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <line x1="1" y1="1" x2="13" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+        <line x1="13" y1="1" x2="1" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <script>
+    (function () {
+      var btn = document.getElementById('hp-menu-btn'), closeBtn = document.getElementById('hp-menu-close'), overlay = document.getElementById('hp-mobile-nav'), links = overlay.querySelectorAll('.hp-link-item a'), socialsRow = document.getElementById('hp-socials-row'), lbl = document.getElementById('hp-current-page'), bars = btn.querySelectorAll('.hp-bar'), isOpen = false;
+      var page = (window.location.pathname.split('/').pop() || 'index.html');
+      links.forEach(function (l) { if (l.getAttribute('data-page') === page) { l.style.color = '#ff00ff'; l.style.fontStyle = 'italic'; lbl.textContent = '— ' + l.textContent.trim(); } });
+      function open() { isOpen = true; overlay.style.clipPath = 'inset(0 0 0% 0)'; overlay.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; btn.setAttribute('aria-expanded', 'true'); bars[0].style.transform = 'rotate(45deg) translate(4.5px,4.5px)'; bars[1].style.opacity = '0'; bars[1].style.transform = 'scaleX(0)'; bars[2].style.transform = 'rotate(-45deg) translate(4.5px,-4.5px)'; links.forEach(function (l, i) { setTimeout(function () { l.style.transform = 'translateY(0)'; l.style.opacity = '1'; }, 100 + i * 70); }); socialsRow.style.transform = 'translateY(0)'; socialsRow.style.opacity = '1'; }
+      function close() { isOpen = false; overlay.style.clipPath = 'inset(0 0 100% 0)'; overlay.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; btn.setAttribute('aria-expanded', 'false'); bars[0].style.transform = ''; bars[1].style.opacity = '1'; bars[1].style.transform = ''; bars[2].style.transform = ''; setTimeout(function () { links.forEach(function (l) { l.style.transform = 'translateY(60px)'; l.style.opacity = '0'; }); socialsRow.style.transform = 'translateY(20px)'; socialsRow.style.opacity = '0'; }, 600); }
+      btn.addEventListener('click', function () { isOpen ? close() : open(); }); closeBtn.addEventListener('click', close); links.forEach(function (l) { l.addEventListener('click', function (e) { if (l.getAttribute('href').startsWith('#')) { e.preventDefault(); close(); } }); }); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) close(); });
+    })();
+  </script>
   <section class="relative h-screen w-full overflow-hidden flex items-end pb-24 px-6 lg:px-24">
     <div class="absolute inset-0 z-0">
       <img alt="LA Pride Block Party Crowd"
@@ -445,7 +515,7 @@
     }
   </script>
 
-      <script src="../js/preloader.js"></script>
+  <script src="../js/preloader.js"></script>
 </body>
 
 </html>

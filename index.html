@@ -13,13 +13,19 @@
     <!-- End Google Tag Manager -->
 
     <meta name="description"
-        content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+        content="Hola Prima is a woman-owned, minority-owned experiential marketing agency in Los Angeles. We create unforgettable brand activations, editorial campaigns, and cultural moments rooted in Big Hoop Energy." />
+    <link rel="canonical" href="https://holaprima.com/" />
     <meta property="og:title" content="Hola Prima Agency | Creators of Big Hoop Energy" />
     <meta property="og:description"
-        content="Hola Prima is a high-end editorial and experiential marketing agency based in Los Angeles, specializing in bringing 'Big Hoop Energy' to campaigns and events." />
+        content="Woman-owned, minority-owned experiential marketing agency in LA. We create unforgettable brand activations and cultural moments rooted in Big Hoop Energy." />
     <meta property="og:image" content="https://holaprima.com/images/hola-prima-logo.png" />
+    <meta property="og:url" content="https://holaprima.com/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hola Prima Agency | Creators of Big Hoop Energy" />
+    <meta name="twitter:description"
+        content="Woman-owned, minority-owned experiential marketing agency in LA. We create unforgettable brand activations rooted in Big Hoop Energy." />
+    <meta name="twitter:image" content="https://holaprima.com/images/hola-prima-logo.png" />
 
 
     <link rel="icon" type="image/png" sizes="256x256" href="/images/favicon.png">
@@ -221,8 +227,9 @@
 
     <div class="film-grain"></div>
     <nav
-        class="fixed top-0 left-0 w-full z-50 px-12 py-8 flex justify-between items-center bg-transparent mix-blend-difference text-white">
-        <div class="flex gap-12 text-[11px] tracking-[0.2em] font-medium uppercase font-sans">
+        class="fixed top-0 left-0 w-full z-50 px-8 md:px-12 py-6 md:py-8 flex justify-between items-center bg-transparent mix-blend-difference text-white">
+        <!-- Left nav links — desktop only -->
+        <div class="hidden md:flex gap-12 text-[11px] tracking-[0.2em] font-medium uppercase font-sans">
             <a class="hover:text-primary transition-colors relative group" href="/servicios.html">
                 Our Servicios
                 <span
@@ -234,14 +241,18 @@
                     class="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
             </a>
         </div>
+        <!-- Mobile: empty spacer so logo stays centred -->
+        <div class="md:hidden w-10"></div>
+        <!-- Centred logo -->
         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
             <div
-                class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center p-1 hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer">
+                class="w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center p-1 hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer">
                 <img alt="Hola Prima Logo Graphic" class="w-full h-full object-cover rounded-full"
                     src="/images/hola-prima-logo.png" />
             </div>
         </div>
-        <div class="flex gap-6 items-center">
+        <!-- Right icons — desktop only -->
+        <div class="hidden md:flex gap-6 items-center">
             <a class="hover:text-primary transition-colors duration-300" href="/contact.html">
                 <span class="material-symbols-outlined text-xl">mail</span>
             </a>
@@ -252,7 +263,171 @@
                 <span class="font-display text-sm tracking-widest">IG</span>
             </a>
         </div>
+        <!-- Hamburger — mobile only -->
+        <button id="hp-menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 cursor-pointer z-[210] relative"
+            aria-label="Open menu" aria-expanded="false">
+            <span class="hp-bar block w-6 h-[1.5px] bg-white transition-all duration-400 origin-center"></span>
+            <span class="hp-bar block w-6 h-[1.5px] bg-white transition-all duration-400"></span>
+            <span class="hp-bar block w-6 h-[1.5px] bg-white transition-all duration-400 origin-center"></span>
+        </button>
     </nav>
+    <!-- ===================== MOBILE NAV OVERLAY ===================== -->
+    <div id="hp-mobile-nav" aria-hidden="true" style="
+        position: fixed; inset: 0; z-index: 200;
+        background: rgba(5,5,5,0.97);
+        backdrop-filter: blur(20px);
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 0.6s cubic-bezier(0.77,0,0.18,1);
+        display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+        padding: 80px 40px 60px;
+        overflow: hidden;
+    ">
+        <!-- Pink glow blob -->
+        <div
+            style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:70vw;height:60vh;background:radial-gradient(ellipse at 50% 0%,rgba(255,0,255,0.14) 0%,transparent 70%);pointer-events:none;">
+        </div>
+        <!-- Page indicator / breadcrumb -->
+        <p id="hp-current-page"
+            style="font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:48px;font-family:monospace;transition:opacity 0.6s ease;">
+        </p>
+        <!-- Nav links -->
+        <nav style="width:100%;">
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;">
+                <li class="hp-link-item" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);">
+                    <a href="/index.html" class="hp-overlay-link"
+                        style="display:block;padding:22px 0;font-size:clamp(2.2rem,10vw,3.5rem);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;color:white;text-decoration:none;transform:translateY(60px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1),opacity 0.55s,color 0.3s;"
+                        data-page="index.html">Home</a>
+                </li>
+                <li class="hp-link-item" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);">
+                    <a href="/servicios.html" class="hp-overlay-link"
+                        style="display:block;padding:22px 0;font-size:clamp(2.2rem,10vw,3.5rem);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;color:white;text-decoration:none;transform:translateY(60px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1),opacity 0.55s,color 0.3s;"
+                        data-page="servicios.html">Our Servicios</a>
+                </li>
+                <li class="hp-link-item" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);">
+                    <a href="/receipts.html" class="hp-overlay-link"
+                        style="display:block;padding:22px 0;font-size:clamp(2.2rem,10vw,3.5rem);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;color:white;text-decoration:none;transform:translateY(60px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1),opacity 0.55s,color 0.3s;"
+                        data-page="receipts.html">The Receipts</a>
+                </li>
+                <li class="hp-link-item" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);">
+                    <a href="/contact.html" class="hp-overlay-link"
+                        style="display:block;padding:22px 0;font-size:clamp(2.2rem,10vw,3.5rem);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;color:white;text-decoration:none;transform:translateY(60px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1),opacity 0.55s,color 0.3s;"
+                        data-page="contact.html">Say Hola</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Socials row -->
+        <div style="margin-top:48px;display:flex;gap:28px;align-items:center;transform:translateY(20px);opacity:0;transition:transform 0.55s cubic-bezier(0.23,1,0.32,1) 0.45s,opacity 0.55s 0.45s;"
+            id="hp-socials-row">
+            <a href="https://www.instagram.com/holaprimagram"
+                style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s;"
+                onmouseover="this.style.color='#ff00ff'"
+                onmouseout="this.style.color='rgba(255,255,255,0.45)'">Instagram</a>
+            <span style="width:20px;height:1px;background:rgba(255,255,255,0.15);"></span>
+            <a href="https://www.linkedin.com/company/holaprima/"
+                style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s;"
+                onmouseover="this.style.color='#ff00ff'"
+                onmouseout="this.style.color='rgba(255,255,255,0.45)'">LinkedIn</a>
+            <span style="width:20px;height:1px;background:rgba(255,255,255,0.15);"></span>
+            <a href="mailto:info@holaprima.com"
+                style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s;"
+                onmouseover="this.style.color='#ff00ff'"
+                onmouseout="this.style.color='rgba(255,255,255,0.45)'">Email</a>
+        </div>
+        <!-- Close button -->
+        <button id="hp-menu-close" aria-label="Close menu" style="
+            position:absolute;top:28px;right:32px;
+            width:44px;height:44px;background:transparent;border:1px solid rgba(255,255,255,0.15);
+            border-radius:50%;display:flex;align-items:center;justify-content:center;
+            cursor:pointer;transition:border-color 0.3s,background 0.3s;
+        " onmouseover="this.style.background='rgba(255,0,255,0.15)';this.style.borderColor='#ff00ff'"
+            onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,0.15)'">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <line x1="1" y1="1" x2="13" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="13" y1="1" x2="1" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+        </button>
+    </div>
+    <script>
+        (function () {
+            var btn = document.getElementById('hp-menu-btn');
+            var closeBtn = document.getElementById('hp-menu-close');
+            var overlay = document.getElementById('hp-mobile-nav');
+            var links = overlay.querySelectorAll('.hp-link-item a');
+            var socialsRow = document.getElementById('hp-socials-row');
+            var currentPageLabel = document.getElementById('hp-current-page');
+            var bars = btn.querySelectorAll('.hp-bar');
+            var isOpen = false;
+
+            // Detect current page and highlight active link
+            var path = window.location.pathname;
+            var page = path.split('/').pop() || 'index.html';
+            links.forEach(function (link) {
+                var lp = link.getAttribute('data-page');
+                if (lp === page || (page === '' && lp === 'index.html')) {
+                    link.style.color = '#ff00ff';
+                    link.style.fontStyle = 'italic';
+                    currentPageLabel.textContent = '— ' + link.textContent.trim();
+                }
+            });
+
+            function openMenu() {
+                isOpen = true;
+                overlay.style.clipPath = 'inset(0 0 0% 0)';
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-expanded', 'true');
+                // Animate bars to X
+                bars[0].style.transform = 'rotate(45deg) translate(4.5px, 4.5px)';
+                bars[1].style.opacity = '0';
+                bars[1].style.transform = 'scaleX(0)';
+                bars[2].style.transform = 'rotate(-45deg) translate(4.5px, -4.5px)';
+                // Stagger link animations
+                links.forEach(function (link, i) {
+                    setTimeout(function () {
+                        link.style.transform = 'translateY(0)';
+                        link.style.opacity = '1';
+                    }, 100 + i * 70);
+                });
+                socialsRow.style.transform = 'translateY(0)';
+                socialsRow.style.opacity = '1';
+            }
+
+            function closeMenu() {
+                isOpen = false;
+                overlay.style.clipPath = 'inset(0 0 100% 0)';
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                btn.setAttribute('aria-expanded', 'false');
+                // Reset bars
+                bars[0].style.transform = '';
+                bars[1].style.opacity = '1';
+                bars[1].style.transform = '';
+                bars[2].style.transform = '';
+                // Reset link positions after close
+                setTimeout(function () {
+                    links.forEach(function (link) {
+                        link.style.transform = 'translateY(60px)';
+                        link.style.opacity = '0';
+                    });
+                    socialsRow.style.transform = 'translateY(20px)';
+                    socialsRow.style.opacity = '0';
+                }, 600);
+            }
+
+            btn.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
+            closeBtn.addEventListener('click', closeMenu);
+            // Close when a link is tapped
+            links.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    // Only close on same-page (anchor), otherwise let navigate naturally
+                    var href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) { e.preventDefault(); closeMenu(); }
+                });
+            });
+            // Escape key
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
+        })();
+    </script>
     <section class="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-black">
         <div class="absolute inset-0 z-0 bg-black">
             <video id="hero-bg-video" class="w-full h-full object-cover opacity-60 scale-105 pointer-events-none"
@@ -479,7 +654,7 @@
         }
     </script>
 
-      <script src="/js/preloader.js"></script>
+    <script src="/js/preloader.js"></script>
 </body>
 
 </html>
